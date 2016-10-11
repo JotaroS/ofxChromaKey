@@ -2,25 +2,32 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    image.load("source.jpg");
+    //image.load("anohito.jpg");
+    video.load("fire.mp4");
+    video.play();
     chromaKey.keyColor = ofColor(0, 255, 0); // set key color to green
+    cam.initGrabber(ofGetWidth(), ofGetHeight());
+    cam.setDeviceID(0);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    cam.update();
+    
+    video.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackgroundGradient(ofColor(128), ofColor(31), OF_GRADIENT_LINEAR);
-    
+    //ofBackgroundGradient(ofColor(128), ofColor(31), OF_GRADIENT_LINEAR);
+    cam.draw(0,0);
     // set threshold by mouseX
     chromaKey.threshold = ofMap(mouseX, 0, ofGetWidth(), 0.0, 1.0);
     
     // draw chromaKey image
     chromaKey.begin();
-    image.draw(0, 0);
+    //image.draw(0, 0);
+    video.draw(0,0);
     chromaKey.end();
     
     // draw threshold value

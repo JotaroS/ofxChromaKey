@@ -24,4 +24,7 @@ public:
     
     ofxChromaKey chromaKey;
     ofImage image;
+    
+    ofVideoPlayer video;
+    ofVideoGrabber cam;
 };
